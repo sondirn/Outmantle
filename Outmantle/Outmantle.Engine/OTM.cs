@@ -72,7 +72,7 @@ namespace Outmantle.Engine
       
         protected override void Draw(GameTime gameTime)
         {
-            GraphicsDevice.Clear(new Color(255, 22, 38));
+            GraphicsDevice.Clear(Color.CornflowerBlue);
             
 
             base.Draw(gameTime);

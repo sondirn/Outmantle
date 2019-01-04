@@ -9,6 +9,8 @@
     <Import_RootNamespace>Outmantle.Engine</Import_RootNamespace>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)Graphics\TextureData.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Graphics\TextureGenerator.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)OTM.cs" />
   </ItemGroup>
 </Project>
