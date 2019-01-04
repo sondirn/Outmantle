@@ -5,7 +5,17 @@ VisualStudioVersion = 15.0.27703.2000
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Outmantle.PC", "Outmantle.PC\Outmantle.PC.csproj", "{6F3BC577-5830-409E-9D46-3AE66D93ACA1}"
 EndProject
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "Outmantle.Engine", "Outmantle.Engine\Outmantle.Engine.shproj", "{14D694FB-0973-4EC8-98BB-1CD1381E4C56}"
+EndProject
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "Outmantle.Editor", "Outmantle.Editor\Outmantle.Editor.shproj", "{DC4A6EB9-CAA0-4466-AFDB-DA65F371E0D5}"
+EndProject
 Global
+	GlobalSection(SharedMSBuildProjectFiles) = preSolution
+		Outmantle.Engine\Outmantle.Engine.projitems*{14d694fb-0973-4ec8-98bb-1cd1381e4c56}*SharedItemsImports = 13
+		Outmantle.Editor\Outmantle.Editor.projitems*{6f3bc577-5830-409e-9d46-3ae66d93aca1}*SharedItemsImports = 4
+		Outmantle.Engine\Outmantle.Engine.projitems*{6f3bc577-5830-409e-9d46-3ae66d93aca1}*SharedItemsImports = 4
+		Outmantle.Editor\Outmantle.Editor.projitems*{dc4a6eb9-caa0-4466-afdb-da65f371e0d5}*SharedItemsImports = 13
+	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
