@@ -8,18 +8,29 @@ namespace Outmantle.Engine.Graphics
 {
     public static class TextureGenerator
     {
-        public static Texture2D bufferToTexture(TextureData buffer)
+        public static Texture2D BufferToTexture(TextureData data)
         {
-            Texture2D result = new Texture2D(OTM.Instance.GraphicsDevice, buffer.Width, buffer.Height);
-            Color[] cData = new Color[buffer.Width * buffer.Height];
-            for(int column = 0; column < buffer.Width; column++)
+            //create blank texture
+            Texture2D result = new Texture2D(OTM.Instance.GraphicsDevice, data.Width, data.Height);
+            //create color data
+            Color[] cData = new Color[data.Width * data.Height];
+            //insert data from buffer into color data
+            int count = 0;
+            for(int column = 0; column < data.Height; column++)
             {
-                for (int row = 0; row < buffer.Height; row++)
+                for(int row = 0; row < data.Width; row++)
                 {
-                    byte g = buffer.Buffer[]
-                    
+                    byte b = data.Buffer[(column * data.Stride) + (row * 4)];
+                    byte g = data.Buffer[(column * data.Stride) + (row * 4) + 1];
+                    byte r = data.Buffer[(column * data.Stride) + (row * 4) + 2];
+                    byte a = data.Buffer[(column * data.Stride) + (row * 4) + 3];
+                    cData[count++] = new Color(r, g, b, a);
                 }
             }
+            //insert color data into texture
+            result.SetData(cData);
+            //return texture
+            return result;
         }
     }
 }
