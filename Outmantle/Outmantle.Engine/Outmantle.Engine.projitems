@@ -9,6 +9,6 @@
     <Import_RootNamespace>Outmantle.Engine</Import_RootNamespace>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="$(MSBuildThisFileDirectory)Engine.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)OTM.cs" />
   </ItemGroup>
 </Project>

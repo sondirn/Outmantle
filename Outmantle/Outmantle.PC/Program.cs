@@ -1,5 +1,5 @@
-﻿using System;
-
+﻿using Outmantle.Engine;
+using System;
 namespace Outmantle.PC
 {
     /// <summary>
@@ -13,8 +13,9 @@ namespace Outmantle.PC
         [STAThread]
         static void Main()
         {
-            using (var game = new Game1())
-                game.Run();
+            using (var game = new OTM())
+             game.Run();
+            
         }
     }
 }
