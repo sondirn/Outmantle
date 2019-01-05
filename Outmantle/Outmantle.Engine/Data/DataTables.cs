@@ -18,6 +18,8 @@ namespace Outmantle.Engine.Data
     {
         public DataSet Data;
         
+        public DataTable test;
+        
         public DataTables()
         {
             
