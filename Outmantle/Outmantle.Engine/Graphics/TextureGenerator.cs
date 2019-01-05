@@ -25,6 +25,7 @@ namespace Outmantle.Engine.Graphics
                     byte r = data.Buffer[(column * data.Stride) + (row * 4) + 2];
                     byte a = data.Buffer[(column * data.Stride) + (row * 4) + 3];
                     cData[count++] = new Color(r, g, b, a);
+                    //System.Console.WriteLine(data.Stride);
                 }
             }
             //insert color data into texture
