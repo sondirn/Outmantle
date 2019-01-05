@@ -12,17 +12,17 @@ namespace Outmantle.Engine.Data
     {
         Texture     = 0,
         Animation   = 1,
-        Sound       = 2
+        Sound       = 2,
+        Map         = 3
     }
-    public class DataTables
+    public class DataTables : IOtmSerializable
     {
         public DataSet Data;
-        
-        public DataTable test;
+        private string fileName;
         
         public DataTables()
         {
-            
+            fileName = "Tables.otm";
         }
 
         public string DirectorManager { get; private set; }
