@@ -1,6 +1,6 @@
 ﻿namespace Outmantle.Engine.Graphics
 {
-    public struct TextureData
+    public class TextureData
     {
         public byte[] Buffer { get; set; }
         public int BufferSize { get; set; }

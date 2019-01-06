@@ -11,6 +11,9 @@
   <ItemGroup>
     <Compile Include="$(MSBuildThisFileDirectory)Data\BigEndianReader.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Data\BigEndianWriter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Data\DataManager.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Data\LoadState.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Data\AssetLoader.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Data\DataTables.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Data\IOtmSerializable.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Graphics\TextureData.cs" />

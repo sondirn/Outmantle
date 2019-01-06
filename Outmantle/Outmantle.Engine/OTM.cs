@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Data;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
@@ -50,7 +51,8 @@ namespace Outmantle.Engine
         protected override void Initialize()
         {
             // TODO: Add your initialization logic here
-            table.CreateTextureTable();
+            table.Deserialize();
+            //table.CreateTextureTable();
             base.Initialize();
         }
 
@@ -77,11 +79,23 @@ namespace Outmantle.Engine
 
             if (!test)
             {
-                texture = TextureGenerator.BufferToTexture(TextureLoader.FromFile(Environment.CurrentDirectory + "/Data/test.png"));
+                
+                //AssetLoader.saveTexture(Editor.FileLoaders.TextureLoader.FromFile(Environment.CurrentDirectory + "/Data/test.png").Buffer);
+                texture = AssetLoader.LoadTexture("whatwhat1", table);
+                table.AddTexture(Editor.FileLoaders.TextureLoader.FromFile(Environment.CurrentDirectory + "/Data/test.png"), "whatwhat");
+                table.AddTexture(Editor.FileLoaders.TextureLoader.FromFile(Environment.CurrentDirectory + "/Data/test.png"), "whatwhat1");
+                int test1 = Editor.FileLoaders.TextureLoader.FromFile(Environment.CurrentDirectory + "/Data/test.png").BufferSize;
+                int test2 = Editor.FileLoaders.TextureLoader.FromFile(Environment.CurrentDirectory + "/Data/test.png").Stride;
+                int test3 = Editor.FileLoaders.TextureLoader.FromFile(Environment.CurrentDirectory + "/Data/test.png").Height;
+                //AssetLoader.saveTexture(Editor.FileLoaders.TextureLoader.FromFile(Environment.CurrentDirectory + "/Data/test.png").Buffer);
+                
+                //table.Serialize();
+                //table.Serialize();
                 test = true;
+
             }
 
-            System.Console.WriteLine(DirectoryManager.test);
+            
 
             base.Update(gameTime);
         }

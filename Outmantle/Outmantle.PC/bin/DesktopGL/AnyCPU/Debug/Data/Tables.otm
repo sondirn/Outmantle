@@ -1,10 +1,18 @@
 <NewDataSet>
   <TextureData>
     <ID>0</ID>
-    <TEXTURE_x0020_NAME>test</TEXTURE_x0020_NAME>
-    <Width>16</Width>
-    <Height>16</Height>
+    <TEXTURENAME>whatwhat</TEXTURENAME>
+    <Width>320</Width>
+    <Height>320</Height>
     <DataLocation>0</DataLocation>
-    <Stride>55</Stride>
+    <Stride>1280</Stride>
+  </TextureData>
+  <TextureData>
+    <ID>1</ID>
+    <TEXTURENAME>whatwhat1</TEXTURENAME>
+    <Width>320</Width>
+    <Height>320</Height>
+    <DataLocation>409600</DataLocation>
+    <Stride>1280</Stride>
   </TextureData>
 </NewDataSet>

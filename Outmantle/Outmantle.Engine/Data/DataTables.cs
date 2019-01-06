@@ -15,27 +15,44 @@ namespace Outmantle.Engine.Data
         Sound       = 2,
         Map         = 3
     }
-    public class DataTables
+    public sealed class DataTables
     {
+        private static DataTables instance = null;
+        private static object padlock = new object();
+        public static DataTables Instance
+        {
+            get
+            {
+                lock (padlock)
+                {
+                    if(instance == null)
+                    {
+                        instance = new DataTables();
+                        
+                    }
+                    return instance;
+                }
+            }
+        }
         public DataSet Data;
-        private string fileName;
         
         public DataTables()
         {
-            fileName = "Tables.otm";
+            Data = new DataSet();
+            //fileName = "Tables.otm";
         }
 
-        public string DirectorManager { get; private set; }
-
+        
         public void Serialize()
         {
            try
             {
                 Data.WriteXml(File.Create(DirectoryManager.DATA_DIRECTORY + "Tables.otm"));
+                
             }
             catch
             {
-                OTM.Instance.Exit();
+                throw new Exception("ya boi could not serialize");
             }
         }
 
@@ -43,25 +60,36 @@ namespace Outmantle.Engine.Data
         {
             try
             {
+                
                 Data.ReadXml(File.Open(DirectoryManager.DATA_DIRECTORY + "Tables.otm", FileMode.Open));
+                
             }
             catch
             {
-                OTM.Instance.Exit();
+                throw new Exception("ya boi could not deserialize");
             }
         }
 
-        public void AddTexture(TextureData data)
+        
+
+        public void AddTexture(TextureData data, string name)
         {
             int index = Data.Tables[(int)Tables.Texture].Rows.Count;
-            int previousIndexWidth = (int)Data.Tables[(int)Tables.Texture].Rows[index - 1]["Width"];
-            int previousIndexHeight = (int)Data.Tables[(int)Tables.Texture].Rows[index - 1]["Height"];
-            long currentLocation = (long)Data.Tables[(int)Tables.Texture].Rows[index - 1]["DataLocation"] +
-                ((long)previousIndexWidth * (long)previousIndexHeight);
-            Data.Tables[(int)Tables.Texture].Rows.Add(index, data.TextureName, data.Width, data.Height, currentLocation, data.Stride);
+            long currentLocation;
+            if(index == 0)
+            {
+                currentLocation = 0;
+            }
+            else
+            {
+                currentLocation = Convert.ToInt64((string)Data.Tables[(int)Tables.Texture].Rows[index - 1]["DataLocation"]) + ((Convert.ToInt64((string)Data.Tables[(int)Tables.Texture].Rows[index - 1]["Stride"]) * Convert.ToInt64((string)Data.Tables[(int)Tables.Texture].Rows[index - 1]["Height"])));
 
+                 
+                    //((int)Data.Tables[(int)Tables.Texture].Rows[index - 1]["Stride"] * (int)Data.Tables[(int)Tables.Texture].Rows[index - 1]["Height"]) + data.BufferSize;
+            }
+
+            Data.Tables[(int)Tables.Texture].Rows.Add(index, name, data.Width, data.Height, currentLocation, data.Stride);
         }
-
         public void CreateTextureTable()
         {
             DataColumn column;
@@ -81,7 +109,7 @@ namespace Outmantle.Engine.Data
             column = new DataColumn
             {
                 DataType = typeof(string),
-                ColumnName = "TEXTURE NAME",
+                ColumnName = "TEXTURENAME",
                 Unique = true
             };
             table.Columns.Add(column);
@@ -117,14 +145,12 @@ namespace Outmantle.Engine.Data
                 Unique = false
             };
             table.Columns.Add(column);
-               
-            table.Rows.Add(0, "test", 16, 16, 0, 55);
-
+            
             Data = new DataSet();
             Data.Tables.Add(table);
             table = null;
             column = null;
-            Serialize();
+            //Serialize();
 
             
         }
