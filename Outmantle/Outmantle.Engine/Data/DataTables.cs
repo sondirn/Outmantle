@@ -15,7 +15,7 @@ namespace Outmantle.Engine.Data
         Sound       = 2,
         Map         = 3
     }
-    public class DataTables : IOtmSerializable
+    public class DataTables
     {
         public DataSet Data;
         private string fileName;
