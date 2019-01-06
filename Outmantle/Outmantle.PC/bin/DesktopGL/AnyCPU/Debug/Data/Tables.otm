@@ -1,0 +1,10 @@
+<NewDataSet>
+  <TextureData>
+    <ID>0</ID>
+    <TEXTURE_x0020_NAME>test</TEXTURE_x0020_NAME>
+    <Width>16</Width>
+    <Height>16</Height>
+    <DataLocation>0</DataLocation>
+    <Stride>55</Stride>
+  </TextureData>
+</NewDataSet>
