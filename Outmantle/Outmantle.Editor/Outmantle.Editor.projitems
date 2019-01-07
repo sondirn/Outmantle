@@ -12,6 +12,6 @@
     <Compile Include="$(MSBuildThisFileDirectory)FileLoaders\TextureLoader.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="$(MSBuildThisFileDirectory)DataManagement\" />
+    <Folder Include="$(MSBuildThisFileDirectory)DataEditor\" />
   </ItemGroup>
 </Project>

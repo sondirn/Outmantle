@@ -8,6 +8,11 @@ namespace Outmantle.Engine.Graphics
 {
     public static class TextureGenerator
     {
+        /// <summary>
+        /// Create Texture2D from TextureData class
+        /// </summary>
+        /// <param name="data"></param>
+        /// <returns></returns>
         public static Texture2D BufferToTexture(TextureData data)
         {
             //create blank texture

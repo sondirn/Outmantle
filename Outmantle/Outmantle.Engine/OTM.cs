@@ -34,8 +34,7 @@ namespace Outmantle.Engine
         }
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
-        Texture2D texture;
-        DataTables table;
+        public DataManager dataManager;
         bool test;
         
         public OTM()
@@ -44,15 +43,16 @@ namespace Outmantle.Engine
             Content.RootDirectory = "Content";
             instance = this;
             test = false;
-            table = new DataTables();
+            graphics.PreferredBackBufferWidth = 1280;
+            graphics.PreferredBackBufferHeight = 720;
+            graphics.ApplyChanges();
         }
 
         
         protected override void Initialize()
         {
             // TODO: Add your initialization logic here
-            table.Deserialize();
-            //table.CreateTextureTable();
+            dataManager = new DataManager();
             base.Initialize();
         }
 
@@ -79,14 +79,12 @@ namespace Outmantle.Engine
 
             if (!test)
             {
-                
+
                 //AssetLoader.saveTexture(Editor.FileLoaders.TextureLoader.FromFile(Environment.CurrentDirectory + "/Data/test.png").Buffer);
-                texture = AssetLoader.LoadTexture("whatwhat1", table);
-                table.AddTexture(Editor.FileLoaders.TextureLoader.FromFile(Environment.CurrentDirectory + "/Data/test.png"), "whatwhat");
-                table.AddTexture(Editor.FileLoaders.TextureLoader.FromFile(Environment.CurrentDirectory + "/Data/test.png"), "whatwhat1");
-                int test1 = Editor.FileLoaders.TextureLoader.FromFile(Environment.CurrentDirectory + "/Data/test.png").BufferSize;
-                int test2 = Editor.FileLoaders.TextureLoader.FromFile(Environment.CurrentDirectory + "/Data/test.png").Stride;
-                int test3 = Editor.FileLoaders.TextureLoader.FromFile(Environment.CurrentDirectory + "/Data/test.png").Height;
+                dataManager.AddTexture("whatwhat");
+                dataManager.AddTexture("whatwhat1");
+                
+                
                 //AssetLoader.saveTexture(Editor.FileLoaders.TextureLoader.FromFile(Environment.CurrentDirectory + "/Data/test.png").Buffer);
                 
                 //table.Serialize();
@@ -106,8 +104,9 @@ namespace Outmantle.Engine
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
-            spriteBatch.Begin();
-            spriteBatch.Draw(texture: texture, position: Vector2.Zero);
+            spriteBatch.Begin(SpriteSortMode.BackToFront, BlendState.AlphaBlend, SamplerState.PointClamp);
+            spriteBatch.Draw(texture: dataManager.GetTexture("whatwhat"), position: Vector2.Zero);
+            spriteBatch.Draw(texture: dataManager.GetTexture("whatwhat1"), position: new Vector2(5, 5));
             spriteBatch.End();
             base.Draw(gameTime);
         }

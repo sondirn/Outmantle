@@ -16,6 +16,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Data\AssetLoader.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Data\DataTables.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Data\IOtmSerializable.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Graphics\Camera.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Graphics\TextureData.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Graphics\TextureGenerator.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)OTM.cs" />

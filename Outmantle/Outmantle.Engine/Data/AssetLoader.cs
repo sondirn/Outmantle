@@ -11,7 +11,12 @@ namespace Outmantle.Engine.Data
 {
     public static class AssetLoader
     {
-
+        /// <summary>
+        /// Loads Texture2D from DAT file
+        /// </summary>
+        /// <param name="AssetName"></param>
+        /// <param name="table"></param>
+        /// <returns></returns>
         public static Texture2D LoadTexture(string AssetName, DataTables table)
         {
             
@@ -46,6 +51,10 @@ namespace Outmantle.Engine.Data
             return result;
         }
 
+        /// <summary>
+        /// Saves Texture to dat file
+        /// </summary>
+        /// <param name="data"></param>
         public static void saveTexture(byte[] data)
         {
             using (BinaryWriter writer = new BinaryWriter(new FileStream(DirectoryManager.DATA_DIRECTORY + "Data1.otd", FileMode.Append)))

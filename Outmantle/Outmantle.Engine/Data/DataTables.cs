@@ -13,33 +13,15 @@ namespace Outmantle.Engine.Data
         Texture     = 0,
         Animation   = 1,
         Sound       = 2,
-        Map         = 3
+        TileSet         = 3
     }
-    public sealed class DataTables
+    public class DataTables
     {
-        private static DataTables instance = null;
-        private static object padlock = new object();
-        public static DataTables Instance
-        {
-            get
-            {
-                lock (padlock)
-                {
-                    if(instance == null)
-                    {
-                        instance = new DataTables();
-                        
-                    }
-                    return instance;
-                }
-            }
-        }
         public DataSet Data;
         
         public DataTables()
         {
             Data = new DataSet();
-            //fileName = "Tables.otm";
         }
 
         
@@ -74,7 +56,9 @@ namespace Outmantle.Engine.Data
 
         public void AddTexture(TextureData data, string name)
         {
+            //Get current Index
             int index = Data.Tables[(int)Tables.Texture].Rows.Count;
+            // calculate location in data file.
             long currentLocation;
             if(index == 0)
             {
@@ -84,10 +68,8 @@ namespace Outmantle.Engine.Data
             {
                 currentLocation = Convert.ToInt64((string)Data.Tables[(int)Tables.Texture].Rows[index - 1]["DataLocation"]) + ((Convert.ToInt64((string)Data.Tables[(int)Tables.Texture].Rows[index - 1]["Stride"]) * Convert.ToInt64((string)Data.Tables[(int)Tables.Texture].Rows[index - 1]["Height"])));
 
-                 
-                    //((int)Data.Tables[(int)Tables.Texture].Rows[index - 1]["Stride"] * (int)Data.Tables[(int)Tables.Texture].Rows[index - 1]["Height"]) + data.BufferSize;
             }
-
+            //Insert Texture to Table
             Data.Tables[(int)Tables.Texture].Rows.Add(index, name, data.Width, data.Height, currentLocation, data.Stride);
         }
         public void CreateTextureTable()
